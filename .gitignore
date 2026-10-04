@@ -1,0 +1,5 @@
+node_modules/
+asset-contact.jpg
+build-manifest.json
+publish-*.json
+*.log
