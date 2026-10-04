@@ -45,3 +45,5 @@ h1,h2,h3,.footer-top p,.archive-lines strong,.contact-profile strong{overflow-wr
  .palette-results>a>small{max-width:100%;text-align:left}.dialog-top>*{min-width:0;overflow-wrap:anywhere}
 }
 .ledger-diagram-head{flex-wrap:wrap;gap:.75rem 1rem}.ledger-diagram-head>*{min-width:0;max-width:100%;overflow-wrap:anywhere}
+body{overflow-wrap:anywhere}
+@media(max-width:760px){.about-signature{font-size:min(9rem,50vw);max-width:100%}.archive-lines>a{grid-template-columns:minmax(0,1.5rem) minmax(0,1fr) minmax(0,1.5rem)}.archive-lines>a>*{min-width:0;max-width:100%;overflow-wrap:anywhere}.archive-lines i{font-size:min(1.8rem,9vw)}}
