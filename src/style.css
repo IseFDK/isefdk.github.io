@@ -47,3 +47,10 @@ h1,h2,h3,.footer-top p,.archive-lines strong,.contact-profile strong{overflow-wr
 .ledger-diagram-head{flex-wrap:wrap;gap:.75rem 1rem}.ledger-diagram-head>*{min-width:0;max-width:100%;overflow-wrap:anywhere}
 body{overflow-wrap:anywhere}
 @media(max-width:760px){.about-signature{font-size:min(9rem,50vw);max-width:100%}.archive-lines>a{grid-template-columns:minmax(0,1.5rem) minmax(0,1fr) minmax(0,1.5rem)}.archive-lines>a>*{min-width:0;max-width:100%;overflow-wrap:anywhere}.archive-lines i{font-size:min(1.8rem,9vw)}}
+/* Image provenance stays in document flow, including when text is doubled. */
+.project-art:is(.abyss-art,.riso-art,.aura-art){aspect-ratio:auto!important;display:flex;flex-direction:column}
+.project-art>img{height:auto;aspect-ratio:1.55;flex:0 0 auto}
+.project-art>img+.art-label{position:static;display:block;max-width:100%;margin:0;padding:.65rem 1rem;flex:0 0 auto;background:#151718;color:#fff}
+.case-figure .project-art>img{aspect-ratio:2.05}
+.home-work-grid>.work-card:last-child .project-art>img{aspect-ratio:2.1}
+@media(max-width:760px){.case-figure .project-art>img{aspect-ratio:1.45}.home-work-grid>.work-card:last-child .project-art>img{aspect-ratio:1.5}}
