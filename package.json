@@ -1,6 +1,6 @@
 {
-  "name": "mansur-portfolio", "version": "1.0.0", "private": true, "type": "module",
-  "description": "Мансур Альбеков / IseFDK — selected web work",
+  "name": "isefdk-portfolio", "version": "1.0.0", "private": true, "type": "module",
+  "description": "IseFDK — selected web work",
   "scripts": { "build": "node scripts/build.mjs", "test": "node --test test/*.test.mjs", "check": "npm test && npm run build && node scripts/audit.mjs", "serve": "python3 -m http.server 4176 --directory docs" },
   "engines": { "node": ">=22" }
 }

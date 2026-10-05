@@ -1,4 +1,4 @@
-# Мансур Альбеков / IseFDK
+# IseFDK
 
 Public portfolio: **https://isefdk.github.io/**
 
