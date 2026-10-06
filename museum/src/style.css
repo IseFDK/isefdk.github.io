@@ -16,3 +16,7 @@
 @media(max-width:800px){.sculpture{top:28%}}
 @media(max-width:600px){.entrance-invitation{margin-top:180px}.atrium-scene .sculpture{top:17%}main{scroll-margin-top:76px}}
 @media(max-width:360px){.entrance-invitation{margin-top:160px}}
+/* Native dialog limits and grid min-content sizing must also handle enlarged text. */
+dialog{max-width:calc(100% - 36px);min-width:0}.floorplan{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:minmax(145px,auto) minmax(58px,auto) minmax(60px,auto)}.floorplan a{min-width:0;overflow-wrap:anywhere}.museum-header{height:auto;min-height:94px;padding-top:16px;padding-bottom:16px}
+@media(max-width:800px){.museum-header{min-height:82px}}
+@media(max-width:600px){dialog{max-width:calc(100% - 24px)}.floorplan{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:minmax(125px,auto) minmax(57px,auto) minmax(57px,auto)}.museum-header{min-height:76px}.atrium-scene .sculpture{top:23%}}
