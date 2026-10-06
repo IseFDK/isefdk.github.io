@@ -1,4 +1,4 @@
-import {projects,filterProjects,readWorkState,workSearch} from './projects.mjs?v=5e429f585b86';
+import {projects,filterProjects,readWorkState,workSearch} from './projects.mjs?v=064977a03634';
 const root=document.body.dataset.root||'';
 // Native dialogs provide modal semantics, Escape and focus containment.
 const menu=document.querySelector('#menu-dialog');

@@ -48,9 +48,25 @@ h1,h2,h3,.footer-top p,.archive-lines strong,.contact-profile strong{overflow-wr
 body{overflow-wrap:anywhere}
 @media(max-width:760px){.about-signature{font-size:min(9rem,50vw);max-width:100%}.archive-lines>a{grid-template-columns:minmax(0,1.5rem) minmax(0,1fr) minmax(0,1.5rem)}.archive-lines>a>*{min-width:0;max-width:100%;overflow-wrap:anywhere}.archive-lines i{font-size:min(1.8rem,9vw)}}
 /* Image provenance stays in document flow, including when text is doubled. */
-.project-art:is(.abyss-art,.riso-art,.aura-art){aspect-ratio:auto!important;display:flex;flex-direction:column}
+.project-art:is(.abyss-art,.riso-art,.aura-art,.last-signal-art){aspect-ratio:auto!important;display:flex;flex-direction:column}
 .project-art>img{height:auto;aspect-ratio:1.55;flex:0 0 auto}
 .project-art>img+.art-label{position:static;display:block;max-width:100%;margin:0;padding:.65rem 1rem;flex:0 0 auto;background:#151718;color:#fff}
 .case-figure .project-art>img{aspect-ratio:2.05}
 .home-work-grid>.work-card:last-child .project-art>img{aspect-ratio:2.1}
 @media(max-width:760px){.case-figure .project-art>img{aspect-ratio:1.45}.home-work-grid>.work-card:last-child .project-art>img{aspect-ratio:1.5}}
+
+/* Last Signal artwork uses the archive's existing paper, type and grid. */
+.story-artwork{padding:2rem 0 4rem;border-top:1px solid var(--ink)}
+.story-artwork .section-heading>p{max-width:25rem;line-height:1.8;color:var(--muted);font-size:.9rem}
+.story-art-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}
+.story-art-grid figure,.story-art-direction figure{margin:0;min-width:0}
+.story-art-grid img{display:block;width:100%;height:auto;aspect-ratio:16/9}
+.story-art-grid figcaption{padding:1rem 0;border-bottom:1px solid var(--line)}
+.story-art-grid figcaption strong{display:block;font-size:.8rem;font-weight:650;line-height:1.6}
+.story-art-grid figcaption p{font-size:.85rem;line-height:1.8;color:var(--muted);margin:.6rem 0 .25rem}
+.story-art-direction{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.65fr);align-items:center;gap:5rem;padding-top:3rem;max-width:62rem;margin:auto}
+.story-art-direction h3{font-size:clamp(2rem,3.5vw,3.5rem);letter-spacing:-.03em;margin:1rem 0 1.5rem}
+.story-art-direction p{line-height:1.85;color:var(--muted);font-size:.95rem;margin-bottom:1.25rem}
+.story-art-direction img{display:block;width:100%;height:auto}
+.story-art-direction figcaption{font-size:.75rem;line-height:1.8;color:var(--muted);margin-top:.75rem}
+@media(max-width:760px){.story-artwork{padding:1.5rem 0 3rem}.story-artwork .section-heading>p{max-width:none;margin-top:1rem}.story-art-grid{grid-template-columns:minmax(0,1fr);gap:1.75rem}.story-art-direction{grid-template-columns:minmax(0,1fr);gap:1.5rem;padding-top:2.5rem}.story-art-direction figure{width:min(100%,22rem);justify-self:center}.story-art-direction h3{font-size:clamp(1.75rem,7vw,2.6rem)}}

@@ -2,7 +2,7 @@
 
 Public portfolio: **https://isefdk.github.io/**
 
-A Russian-first editorial archive of five projects: ABYSS, RISO RIOT, AURA ATLAS, NOCTURNE and LEDGER. Ten actual static pages: home, work archive, five case studies, about, process and contact. Each case describes the idea, actual interaction, technical decisions, sources and limits.
+A Russian-first editorial archive of six projects: ABYSS, RISO RIOT, AURA ATLAS, NOCTURNE, LEDGER and LAST SIGNAL. Eleven actual static pages: home, work archive, six case studies, about, process and contact. Each case describes the idea, actual interaction, technical decisions, sources and limits.
 
 ## Run
 
@@ -19,7 +19,7 @@ Local server: http://localhost:4176. Output is `docs/`; GitHub Pages uses `main 
 
 ## Interaction
 
-- Selectable five-project stage; no autoplay
+- Selectable six-project stage, with LAST SIGNAL initially featured; no autoplay
 - Search and category intersection in the archive, URL state, browser Back/Forward and explicit reset/empty state
 - Native-dialog mobile menu and command palette; Ctrl/⌘ K, arrows, Enter and Escape with focus restoration
 - Three keyboard-operated walkthrough tabs per case
@@ -35,11 +35,11 @@ Project records live in `src/projects.mjs`. Add a record, make sure its sources 
 
 ## Artwork, accuracy and licensing
 
-The three image assets are reused from the author's project workspaces, not stock illustrations or fabricated screenshots. They were generated with the built-in image-generation tool; no particular image model version is asserted. Their originals remain in the project creation workspace. Portfolio versions are ordinary resized/compressed WebP exports. Provenance and upstream source references are in `ASSETS.md`.
+The image assets are reused from the author's project workspaces, not stock illustrations or fabricated screenshots. They were generated with the built-in image-generation tool; no particular image model version is asserted. Their originals remain in the project creation workspace. Portfolio versions are ordinary resized/compressed WebP exports. Provenance and upstream source references are in `ASSETS.md`. LAST SIGNAL adds three original landscape panels and one portrait edition to its case study, reused unchanged from the story project.
 
 NOCTURNE's portfolio visual is a diagram of its actual three-stop observation sequence. LEDGER's visual is a diagram based on its README. They are explicitly labeled as diagrams, not screenshots.
 
-AURA is an unofficial noncommercial Pokémon fan project. Pokémon, Greninja and all related characters/names belong to the corresponding rights holders. This portfolio does not imply affiliation, endorsement or a franchise license. MIT applies to portfolio source code only, not franchise assets or third-party fonts. Generated artwork may be reused subject to applicable OpenAI terms; no exclusive-copyright claim is made.
+AURA is an unofficial noncommercial Pokémon fan project. Pokémon, Greninja and all related characters/names belong to the corresponding rights holders. This portfolio does not imply affiliation, endorsement or a franchise license. MIT applies to portfolio source code only, not franchise assets or third-party fonts. The existing portfolio source license does not grant a license to the LAST SIGNAL story or its upstream assets. No new license grant is added; generated imagery makes no exclusive-copyright claim.
 
 Manrope fonts are self-hosted under the SIL Open Font License 1.1 (`public/fonts/OFL.txt`). No runtime font CDN.
 

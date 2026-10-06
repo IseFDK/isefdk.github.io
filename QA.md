@@ -1,5 +1,15 @@
 # Portfolio verification
 
+## LAST SIGNAL update — 2026-10-06 UTC
+
+The archive now contains six projects and eleven public routes. The prior five project records were compared against the remote baseline `d96a7a1f78ac1175ca9ffbdf76ce9a3d3da658f2` and remain unchanged.
+
+Pre-publication automated checks passed on Node 24: six tests, deterministic build, thirteen-HTML static audit, local references, unique IDs, in-page targets, image alternatives and Last Signal integration. The new case includes the live story, reading edition, creation notes, source, three landscape panels and a separately composed portrait illustration. The four reused art assets match the upstream Last Signal commit `a73eb30a2019ec5ca83d2b0a3f2e18a1ceb1c2f0` byte-for-byte.
+
+Cloud browser localhost preview was blocked by network policy. Updated rendered layout, interaction and deployment checks must be verified on the published Pages site before this update is reported complete. The historical evidence below applies to the earlier five-project build, not the new code.
+
+## Earlier five-project verification
+
 Date: 2026-10-04 UTC. Published site: https://isefdk.github.io/.
 
 ## Automated checks
