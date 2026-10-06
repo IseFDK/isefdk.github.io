@@ -2,11 +2,53 @@
 
 ## LAST SIGNAL update — 2026-10-06 UTC
 
-The archive now contains six projects and eleven public routes. The prior five project records were compared against the remote baseline `d96a7a1f78ac1175ca9ffbdf76ce9a3d3da658f2` and remain unchanged.
+Published portfolio: https://isefdk.github.io/
+New case: https://isefdk.github.io/work/last-signal/
 
-Pre-publication automated checks passed on Node 24: six tests, deterministic build, thirteen-HTML static audit, local references, unique IDs, in-page targets, image alternatives and Last Signal integration. The new case includes the live story, reading edition, creation notes, source, three landscape panels and a separately composed portrait illustration. The four reused art assets match the upstream Last Signal commit `a73eb30a2019ec5ca83d2b0a3f2e18a1ceb1c2f0` byte-for-byte.
+The archive contains six projects and eleven public routes. The prior five project records were compared against remote baseline `d96a7a1f78ac1175ca9ffbdf76ce9a3d3da658f2` and remain unchanged. Runtime interaction code and LICENSE were preserved.
 
-Cloud browser localhost preview was blocked by network policy. Updated rendered layout, interaction and deployment checks must be verified on the published Pages site before this update is reported complete. The historical evidence below applies to the earlier five-project build, not the new code.
+### Automated checks
+
+`npm run check` passes on Node 24: six tests, deterministic build, thirteen-HTML static audit, local references, unique IDs, in-page targets, image alternatives and Last Signal integration. The new case includes the live story, reading edition, creation notes, source, three landscape panels and a separately composed portrait illustration. The four reused art assets match upstream Last Signal commit `a73eb30a2019ec5ca83d2b0a3f2e18a1ceb1c2f0` byte-for-byte.
+
+### Final live rendering
+
+Cloud Chrome checked final code commit `2c5ac0b2c2eb4e24330e9741a2fa86f37c60bd33`, stylesheet revision `164bc703bca4`:
+
+- 88 route checks: all eleven public routes at 320, 390, 768 and 1440 px, each with 100% and 200% root text size
+- 24 selected-stage checks: all six projects at 320/390 px, each at 100% and 200% root text size
+- No horizontal page overflow, measured element text overflow or measured text/control elements beyond the viewport edges across the final 112 checks
+- The initial enlarged-tablet check exposed cramped next-case links in three cases. Intrinsic footer wrapping fixed them; all 88 route checks were rerun on the final stylesheet
+- Artwork grids use intrinsic columns as text grows. The phone portrait displays its full original aspect ratio; all five case image instances loaded after traversing the gallery
+- Actual desktop case hero/gallery, phone hero/portrait and enlarged tablet next-case link were visually inspected
+
+### Live interaction checks
+
+28 checks passed, covering:
+
+- All six project-stage selections plus repeated LAST SIGNAL selection, with matching media, index, case link and pressed state
+- Command-palette English/Russian search, arrow selection, empty state, Escape focus restoration, repeated reopening/Close, Ctrl K and Enter navigation to the new case
+- Case walkthrough click, ArrowRight, End and Home with matching selected tab and visible panel
+- Archive Russian search, incompatible-category empty state, editorial intersection, reset, Back/Forward restoration and opening the new case
+- Mobile menu at 320 px with enlarged text: Escape/focus restoration, repeated Close and archive navigation with a closed destination menu
+- Full portrait ratio and loaded gallery assets
+- Reduced-motion fixture: automatic scrolling, no stage transform and zero transition duration
+
+No site-origin console warnings/errors were observed in captured logs. Browser-extension metadata errors were unrelated to the site.
+
+### Deployment evidence
+
+- Final code: https://github.com/IseFDK/isefdk.github.io/commit/2c5ac0b2c2eb4e24330e9741a2fa86f37c60bd33
+- Verify portfolio: https://github.com/IseFDK/isefdk.github.io/actions/runs/37422675708 — success for that exact commit
+- Pages build and deployment: https://github.com/IseFDK/isefdk.github.io/actions/runs/37422674966 — success for that exact commit
+
+The following documentation-only commit records these checks; it does not alter the tested production files.
+
+### Limits
+
+Responsive checks used the live site in same-origin cloud Chrome iframes. Safari, Firefox, physical phones/touch hardware, browser-native zoom and Core Web Vitals were not separately tested. Text enlargement changes the fixture's root font size. System reduced-motion support was source-inspected; the equivalent fixture behavior was browser-tested. These checks do not imply a full accessibility audit or certify external projects.
+
+Localhost preview was blocked by network policy, so rendered checks were performed on the actual published Pages site. The historical evidence below applies to the earlier five-project build.
 
 ## Earlier five-project verification
 
