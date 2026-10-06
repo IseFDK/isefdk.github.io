@@ -11,3 +11,8 @@
 @media(max-width:600px){.atrium-scene{position:relative;inset:auto;z-index:0;order:2;height:470px}.atrium-scene .architecture{position:absolute;inset:0}.atrium-scene .architecture img{object-position:55% 60%}.atrium-scene .sculpture{left:20%;top:12%;bottom:auto;height:250px;width:60%;z-index:2}.atrium-scene .sculpture figcaption{top:108%}.atrium-scene .sculpture-controls{top:122%}.atrium-view:before{display:none}.gallery-mounts{display:none}}
 .mount-4{left:2.75%;top:15.1%;width:6.45%;height:40.45%;clip-path:polygon(0 0,100% 11.5%,100% 93.5%,0 100%)}.mount-5{left:85.2%;top:29.9%;width:2.6%;height:26.8%;clip-path:polygon(0 12%,100% 0,100% 100%,0 99%)}.mount-6{left:91.65%;top:22.5%;width:5.05%;height:34.2%;clip-path:polygon(0 11%,100% 0,100% 100%,0 100%)}
 .room-arrive .architecture img{animation:museum-approach .85s cubic-bezier(.16,.7,.3,1)}@keyframes museum-approach{from{transform:scale(1.025)}to{transform:scale(1)}}html[data-motion=reduce] .room-arrive .architecture img{animation:none}@media(prefers-reduced-motion:reduce){.room-arrive .architecture img{animation:none}}
+/* Room views keep the architectural plan available without masking the arrival invitation. */
+.museum-header{position:sticky;top:0}body[data-room=entrance] .room-dock{display:none}.entrance-invitation{margin-top:clamp(170px,23vh,280px)}.frame>img,.story-strips img{height:auto}.sculpture{top:20%}main{scroll-margin-top:95px}
+@media(max-width:800px){.sculpture{top:28%}}
+@media(max-width:600px){.entrance-invitation{margin-top:180px}.atrium-scene .sculpture{top:17%}main{scroll-margin-top:76px}}
+@media(max-width:360px){.entrance-invitation{margin-top:160px}}
