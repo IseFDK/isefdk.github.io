@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
 import {projects} from '../src/projects.mjs';
 const all=[];function walk(dir){for(const file of fs.readdirSync(dir)){const p=path.join(dir,file);fs.statSync(p).isDirectory()?walk(p):all.push(p);}}walk('docs');
-const pages=all.filter(p=>p.endsWith('.html'));
+const pages=all.filter(p=>p.endsWith('.html')&&!p.startsWith('docs/museum/')); 
 assert.equal(pages.length,projects.length+7); // 5 general routes + cases + 404 + unlisted QA.
 for(const file of pages){const html=fs.readFileSync(file,'utf8');assert.ok(/<html lang=/.test(html),file);if(file.endsWith('qa.html'))continue;assert.equal((html.match(/<h1(?: |>) /g)||[]).length,0);assert.equal((html.match(/<h1[ >]/g)||[]).length,1,'one h1 '+file);assert.ok(html.includes('id="main"'));assert.ok(!html.includes('schoditsya'));assert.ok(!html.includes('perch-studio'));assert.ok(!html.includes('lumen-lens'));assert.ok(!/<form/.test(html));assert.ok(html.includes('type="module"'));assert.ok(/style\.css\?v=[a-f0-9]{12}/.test(html));for(const m of html.matchAll(/(?:href|src)="([^"#]+)"/g)){const value=m[1].split(/[?#]/)[0];if(!value||/^https?:|mailto:|data:/.test(value))continue;const local=path.resolve(path.dirname(file),value);assert.ok(local.startsWith(path.resolve('docs')),'escape '+value);assert.ok(fs.existsSync(local),'missing '+file+' '+value);if(fs.statSync(local).isDirectory())assert.ok(fs.existsSync(path.join(local,'index.html')));}}
 // Every published route exposes the same pseudonymous author identity.
@@ -31,3 +31,5 @@ assert.ok(last.includes('story-art-grid'));assert.ok(last.includes('last-signal-
 assert.ok(last.includes('https://isefdk.github.io/last-signal/notes.html'));assert.ok(last.includes('https://isefdk.github.io/last-signal/read.html'));
 const sitemap=fs.readFileSync('docs/sitemap.xml','utf8');assert.equal((sitemap.match(/<loc>/g)||[]).length,projects.length+5);assert.ok(sitemap.includes('work/last-signal/'));
 const hashes=all.map(p=>[p,crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex')]);fs.writeFileSync('build-manifest.json',JSON.stringify(hashes,null,2)+'\n');console.log(`Audit passed: ${pages.length} HTML files, local references, ${projects.length} authorized projects, cache hashes, accessibility primitives and Last Signal integration.`);
+
+await import("../museum/scripts/audit.mjs");
