@@ -6,7 +6,7 @@ The existing portfolio and case URLs remain unchanged. The museum is static, Rus
 
 ## Build and verify
 
-Run `npm run check` from the repository root. The original portfolio is built first; `museum/scripts/build.mjs` adds only `docs/museum`. The original audit continues checking original routes; the museum has its own audit and five Node test groups, included in the normal test command. `docs/museum/qa.html` is an unlisted noindex viewport harness for 320, 390, 768 and 1440px, 200% text and reduced motion.
+Run `npm run check` from the repository root. The original portfolio is built first; `museum/scripts/build.mjs` adds only `docs/museum`. The original audit continues checking original routes; the museum has its own audit and six Node test groups, included in the normal test command. `docs/museum/qa.html` is an unlisted noindex viewport harness for 320, 390, 768 and 1440px, 200% text and reduced motion.
 
 No npm runtime dependencies, account, backend, analytics or data submission. Architecture images are original generated decorative visualizations. Text, exhibits, controls and navigation are ordinary HTML. Sculpture geometry and WebGL shading are original code, lazily loaded only in the atrium; rotation starts only when the visitor chooses it and pauses outside the atrium/background tab. It has buttons instead of drag-only interaction and honors reduced motion. A lost context restores the static fallback.
 
