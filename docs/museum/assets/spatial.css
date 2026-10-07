@@ -18,3 +18,5 @@
 .cpu-scene .world-art .art-plaque{min-width:145px;width:max(100%,145px)}.cpu-scene .world-art[data-plaque-visible=false] .art-plaque{display:none}.cpu-scene .world-art[data-plaque-visible=false]:hover .art-plaque,.cpu-scene .world-art[data-plaque-visible=false]:focus-visible .art-plaque{display:block;font-size:11px}.motion-reduce .wall-texture{transition:none}
 
 html:not(.enhanced) [data-room],html:not(.enhanced) .folio-trigger,html:not(.enhanced) .museum-identity{display:none}html:not(.enhanced) .document-fallback{display:block}
+
+.sr-only{top:0;left:0}
