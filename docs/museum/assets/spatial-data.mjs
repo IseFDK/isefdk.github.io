@@ -17,9 +17,9 @@ export const prototypeCollection=[{
  tech:['CSS 3D','JavaScript','Procedural geometry'],limitsEn:'An interaction sample only. No game release, store page, achievements or launch date is claimed.',limitsRu:'Только демонстрация взаимодействия. Релиз игры, магазин, достижения и дата выпуска не заявлены.',live:null,repo:null,
 }];
 export const corridorFrames=[
- {id:'signal-platform',project:'last-signal',side:-1,depth:1050,y:0,width:540,height:310,image:'last-signal-station.webp',titleEn:'Platform / 00:07',titleRu:'Платформа / 00:07'},
- {id:'signal-observatory',project:'last-signal',side:1,depth:1950,y:-30,width:580,height:330,image:'last-signal-observatory.webp',titleEn:'Observatory / 04:18',titleRu:'Обсерватория / 04:18'},
- {id:'signal-dawn',project:'last-signal',side:-1,depth:2820,y:15,width:520,height:295,image:'last-signal-dawn.webp',titleEn:'Dawn / 06:03',titleRu:'Рассвет / 06:03'},
+ {id:'signal-platform',project:'last-signal',side:-1,depth:1050,y:0,width:540,height:311.625,image:'last-signal-station.webp',titleEn:'Platform / 00:07',titleRu:'Платформа / 00:07'},
+ {id:'signal-observatory',project:'last-signal',side:1,depth:1950,y:-30,width:580,height:334.125,image:'last-signal-observatory.webp',titleEn:'Observatory / 04:18',titleRu:'Обсерватория / 04:18'},
+ {id:'signal-dawn',project:'last-signal',side:-1,depth:2820,y:15,width:520,height:300.375,image:'last-signal-dawn.webp',titleEn:'Dawn / 06:03',titleRu:'Рассвет / 06:03'},
 ];
 export const interactiveObjects=[{id:'light-study-object',project:'light-study',side:0,depth:1350,y:75,width:360,height:320}];
 export const wings={gallery:{length:3700,end:4050,items:corridorFrames},interactive:{length:2550,end:3000,items:interactiveObjects}};

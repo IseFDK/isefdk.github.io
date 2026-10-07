@@ -17,5 +17,5 @@ export function mountSculpture(container,{reduced=false}={}){
  document.addEventListener('visibilitychange',()=>{render();schedule();});const observer=new ResizeObserver(render);observer.observe(canvas);
  canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();lost=true;cancelAnimationFrame(frame);canvas.hidden=true;fallback.hidden=false;controls.hidden=true;status.textContent='Static view · 3D unavailable';});
  canvas.addEventListener('webglcontextrestored',()=>{status.textContent='Static view · refresh for 3D';});
- return{setActive(value){active=value;render();schedule();},setReduced(value){reduced=value;if(value){rotating=false;sync();}}};
+ return{setActive(value){active=value;canvas.hidden=!value||lost;fallback.hidden=value&&!lost;controls.hidden=!value||lost;if(!value&&!lost)status.textContent='Static view · light quality';else if(value&&!lost)status.textContent='Procedural 3D sculpture';render();schedule();},setReduced(value){reduced=value;if(value){rotating=false;sync();}}};
 }

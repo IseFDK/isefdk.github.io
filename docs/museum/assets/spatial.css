@@ -13,3 +13,8 @@
 .cpu-scene .world-art img{object-fit:fill}
 /* The viewport clips, never becoming a second hidden scroll container. */
 .wing-viewport{overflow:clip}
+
+.cpu-scene .wall-texture{position:absolute;inset:0;width:100%;height:100%;max-width:none;pointer-events:none;transition:filter .2s}.cpu-scene .world-art:hover .wall-texture,.cpu-scene .world-art:focus-visible .wall-texture{filter:brightness(1.06)}
+.cpu-scene .world-art .art-plaque{min-width:145px;width:max(100%,145px)}.cpu-scene .world-art[data-plaque-visible=false] .art-plaque{display:none}.cpu-scene .world-art[data-plaque-visible=false]:hover .art-plaque,.cpu-scene .world-art[data-plaque-visible=false]:focus-visible .art-plaque{display:block;font-size:11px}.motion-reduce .wall-texture{transition:none}
+
+html:not(.enhanced) [data-room],html:not(.enhanced) .folio-trigger,html:not(.enhanced) .museum-identity{display:none}html:not(.enhanced) .document-fallback{display:block}
