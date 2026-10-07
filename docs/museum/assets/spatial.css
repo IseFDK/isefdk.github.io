@@ -22,3 +22,6 @@ html:not(.enhanced) [data-room],html:not(.enhanced) .folio-trigger,html:not(.enh
 .sr-only{top:0;left:0}
 
 .wing-track{overflow-anchor:none}
+
+.dossier::backdrop{backdrop-filter:none}
+@media(max-width:699px){.corridor-hint{bottom:94px}.nearby-work{bottom:157px}.progress-mark{bottom:66px}}
