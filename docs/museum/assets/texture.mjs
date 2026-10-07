@@ -6,7 +6,7 @@ export function affineTriangle(source,target){
  const b=((v1-v0)*(y2-y0)-(v2-v0)*(y1-y0))/det,d=((v2-v0)*(x1-x0)-(v1-v0)*(x2-x0))/det;
  return[a,b,c,d,u0-a*x0-c*y0,v0-b*x0-d*y0];
 }
-function triangle(ctx,image,source,target){const matrix=affineTriangle(source,target);if(!matrix)return;ctx.save();ctx.beginPath();ctx.moveTo(...target[0]);ctx.lineTo(...target[1]);ctx.lineTo(...target[2]);ctx.closePath();ctx.clip();ctx.transform(...matrix);ctx.drawImage(image,0,0);ctx.restore();}
+function triangle(ctx,image,source,target){const matrix=affineTriangle(source,target);if(!matrix)return;ctx.save();const area=(target[1][0]-target[0][0])*(target[2][1]-target[0][1])-(target[1][1]-target[0][1])*(target[2][0]-target[0][0]),sign=area>=0?1:-1;const normals=target.map((p,i)=>{const q=target[(i+1)%3],dx=q[0]-p[0],dy=q[1]-p[1],length=Math.hypot(dx,dy)||1;return[sign*dy/length,-sign*dx/length];}),clip=target.map((p,i)=>{const a=normals[(i+2)%3],b=normals[i],scale=.8/Math.max(.001,1+a[0]*b[0]+a[1]*b[1]);return[p[0]+(a[0]+b[0])*scale,p[1]+(a[1]+b[1])*scale];});ctx.beginPath();ctx.moveTo(...clip[0]);ctx.lineTo(...clip[1]);ctx.lineTo(...clip[2]);ctx.closePath();ctx.clip();ctx.transform(...matrix);ctx.drawImage(image,0,0);ctx.restore();}
 export function paintWallTexture(canvas,image,project,width,height,quality='full'){
  if(!image.naturalWidth||!width||!height)return false;
  const ratio=Math.min(devicePixelRatio||1,1.4,1100/width,800/height);canvas.width=Math.max(1,Math.ceil(width*ratio));canvas.height=Math.max(1,Math.ceil(height*ratio));
