@@ -4,7 +4,7 @@ await import('../../museum-v1/scripts/build.mjs');
 const base=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),root=path.resolve(base,'..'),out=path.join(root,'docs/museum');
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 fs.rmSync(out,{recursive:true,force:true});fs.mkdirSync(path.join(out,'assets'),{recursive:true});fs.cpSync(path.join(base,'public'),out,{recursive:true});
-const assetNames=['spatial.css','folio.css','spatial-app.mjs','engine.mjs','spatial-data.mjs','folio.mjs','geometry.mjs','sculpture.mjs'];
+const assetNames=['spatial.css','folio.css','spatial-app.mjs','projection.mjs','engine.mjs','spatial-data.mjs','folio.mjs','geometry.mjs','sculpture.mjs'];
 const hash=crypto.createHash('sha256').update(assetNames.map(f=>fs.readFileSync(path.join(base,'src',f))).join('\0')).digest('hex').slice(0,12);
 for(const f of assetNames){let s=fs.readFileSync(path.join(base,'src',f),'utf8');if(f==='spatial-data.mjs')s=s.replace("'../../src/projects.mjs'","'../../assets/projects.mjs'");fs.writeFileSync(path.join(out,'assets',f),s);}
 fs.writeFileSync(path.join(out,'architecture/sculpture.svg'),sculptureSVG());
