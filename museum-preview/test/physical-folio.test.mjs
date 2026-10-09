@@ -115,3 +115,5 @@ test('mount is a harmless update object when its markup is absent',()=>{
   const previous=globalThis.document;globalThis.document={querySelector:()=>null};
   try{assert.equal(typeof mountPhysicalFolio().update,'function');mountPhysicalFolio().update();}finally{if(previous===undefined)delete globalThis.document;else globalThis.document=previous;}
 });
+
+test('opening from a physical Creator plaque restores that exact opener',()=>{const f=fixture();try{const plaque=new Node();f.api.open(plaque);assert.equal(f.dialog.open,true);f.close.dispatch('click');assert.equal(f.doc.activeElement,plaque);assert.equal(f.dialog.open,false);}finally{f.restore();}});

@@ -199,5 +199,5 @@ export function mountPhysicalFolio({getState=()=>({}), onNavigate=()=>{}, onPref
     onPreferences({[key]:input.value}); update();
   });
   update();
-  return {update};
+  return {update,open};
 }

@@ -1,4 +1,4 @@
-import{paintWallTexture}from'./texture.mjs?v=1dfae64036ab';
+import{paintWallTexture}from'./texture.mjs?v=90b584b206f6';
 // Explicit camera projection: works without WebGL or nested CSS-3D compositing.
 export function cameraPoint([x,y,z],pose){z+=pose.position;const a=pose.yaw*Math.PI/180,c=Math.cos(a),s=Math.sin(a);return[(x*c+z*s)*pose.scale+pose.offset,y*pose.scale,(-x*s+z*c)*pose.scale+pose.approach];}
 export function clipNear(points,near){const out=[];for(let i=0;i<points.length;i++){const a=points[i],b=points[(i+1)%points.length],ia=a[2]<=near,ib=b[2]<=near;if(ia)out.push(a);if(ia!==ib){const t=(near-a[2])/(b[2]-a[2]);out.push([a[0]+t*(b[0]-a[0]),a[1]+t*(b[1]-a[1]),near]);}}return out;}
