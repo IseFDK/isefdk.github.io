@@ -1,4 +1,4 @@
-import {makeSculpture} from './geometry.mjs?v=12494742116e';
+import {makeSculpture} from './geometry.mjs?v=289f396fe59f';
 export function mountSculpture(container,{reduced=false}={}){
  const canvas=container.querySelector('canvas'),fallback=container.querySelector('.sculpture-fallback'),status=container.querySelector('[data-sculpture-status]'),controls=container.querySelector('.sculpture-controls'); let gl;
  try{gl=canvas.getContext('webgl',{alpha:true,antialias:true,premultipliedAlpha:false});}catch{}

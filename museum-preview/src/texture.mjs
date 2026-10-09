@@ -7,13 +7,18 @@ export function affineTriangle(source,target){
  const b=((v1-v0)*(y2-y0)-(v2-v0)*(y1-y0))/det,d=((v2-v0)*(x1-x0)-(v1-v0)*(x2-x0))/det;
  return[a,b,c,d,u0-a*x0-c*y0,v0-b*x0-d*y0];
 }
-function triangle(ctx,image,source,target){const matrix=affineTriangle(source,target);if(!matrix)return;ctx.save();const area=(target[1][0]-target[0][0])*(target[2][1]-target[0][1])-(target[1][1]-target[0][1])*(target[2][0]-target[0][0]),sign=area>=0?1:-1;const normals=target.map((p,i)=>{const q=target[(i+1)%3],dx=q[0]-p[0],dy=q[1]-p[1],length=Math.hypot(dx,dy)||1;return[sign*dy/length,-sign*dx/length];}),clip=target.map((p,i)=>{const a=normals[(i+2)%3],b=normals[i],scale=.8/Math.max(.001,1+a[0]*b[0]+a[1]*b[1]);return[p[0]+(a[0]+b[0])*scale,p[1]+(a[1]+b[1])*scale];});ctx.beginPath();ctx.moveTo(...clip[0]);ctx.lineTo(...clip[1]);ctx.lineTo(...clip[2]);ctx.closePath();ctx.clip();ctx.transform(...matrix);ctx.drawImage(image,0,0);ctx.restore();}
-export function paintWallTexture(...args){return measure('texture',()=>paint(...args));}
-function paint(canvas,image,project,width,height,quality='full'){
- if(!image.naturalWidth||!width||!height)return false;
- const ratio=Math.min(devicePixelRatio||1,1.4,1100/width,800/height);canvas.width=Math.max(1,Math.ceil(width*ratio));canvas.height=Math.max(1,Math.ceil(height*ratio));
- const ctx=canvas.getContext('2d',{alpha:true});if(!ctx)return false;ctx.scale(ratio,ratio);ctx.imageSmoothingEnabled=true;
- const steps=quality==='light'?6:14,sw=image.naturalWidth,sh=image.naturalHeight;
- for(let n=0;n<steps;n++){const a=n/steps,b=(n+1)/steps;const p0=project(a,0),p1=project(b,0),p2=project(b,1),p3=project(a,1);triangle(ctx,image,[[a*sw,0],[b*sw,0],[b*sw,sh]],[p0,p1,p2]);triangle(ctx,image,[[a*sw,0],[b*sw,sh],[a*sw,sh]],[p0,p2,p3]);}
- return true;
+// Exact projective mapping: the browser composites one decoded image plane.
+// Unlike triangle clipping, it never reallocates or repaints a canvas on scroll.
+export function projectiveMatrix(points,width=1,height=1){
+ const [[x0,y0],[x1,y1],[x2,y2],[x3,y3]]=points;
+ const dx1=x1-x2,dx2=x3-x2,dx3=x0-x1+x2-x3,dy1=y1-y2,dy2=y3-y2,dy3=y0-y1+y2-y3;
+ const det=dx1*dy2-dx2*dy1;let g=0,h=0;
+ if(Math.abs(dx3)+Math.abs(dy3)>1e-8){if(Math.abs(det)<1e-8)return null;g=(dx3*dy2-dx2*dy3)/det;h=(dx1*dy3-dx3*dy1)/det;}
+ return[(x1-x0+g*x1)/width,(y1-y0+g*y1)/width,0,g/width,(x3-x0+h*x3)/height,(y3-y0+h*y3)/height,0,h/height,0,0,1,0,x0,y0,0,1];
 }
+export function paintWallTexture(canvas,image,project,width,height){return measure('texture',()=>{
+ if(!image.naturalWidth||!width||!height)return false;
+ const matrix=projectiveMatrix([project(0,0),project(1,0),project(1,1),project(0,1)],image.naturalWidth,image.naturalHeight);if(!matrix)return false;
+ Object.assign(image.style,{position:'absolute',left:'0',top:'0',width:image.naturalWidth+'px',height:image.naturalHeight+'px',transformOrigin:'0 0',transform:'matrix3d('+matrix.join(',')+')',clipPath:'none'});
+ return true;
+ });}
