@@ -53,3 +53,6 @@ console.log('Built '+routes.length+' public routes, 404 and unlisted QA surface.
 
 // Build the isolated museum preview without changing existing portfolio output.
 await import("../museum/scripts/build.mjs");
+
+// Build the separately published interactive museum preview.
+await import("../museum-preview/scripts/build.mjs");

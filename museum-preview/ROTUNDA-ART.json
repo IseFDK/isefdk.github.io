@@ -1,0 +1,78 @@
+{
+  "title": "IseFDK Circular Museum Rotunda",
+  "asset_role": "Decorative 2.5D architectural foundation for a single-viewport spatial museum prototype",
+  "original_generation": {
+    "mode": "Built-in image generation",
+    "tool": "image_gen",
+    "generated_on": "2026-10-07",
+    "transparent_background": false,
+    "original_asset": "rotunda-original.png",
+    "prompt": "Use case: stylized-concept\nAsset type: photoreal architectural background for a single-viewport interactive spatial museum, desktop landscape 16:9\nPrimary request: Create one original architectural visualization of a spacious circular museum rotunda. This must be a clearly round central room, with a continuous curved back wall and curved concentric stone floor joints, not a rectangular hall.\nScene and style: warm white modern neoclassical museum architecture, pared-back contemporary stone, monumental but calm, museum-like rather than temple-like. Airy oval skylight overhead, natural daylight, physically convincing soft shadows. Subtle limestone texture, ivory/off-white palette, only tiny restrained brass details, very little greenery. No ornate decoration.\nComposition: fixed centered frontal eye-level camera looking across the circular central hall, a complete single viewport with wide landscape 16:9 framing. Back wall bows gently around the central space. At exactly approximately x50%, y72% of the image place a low EMPTY oval stone sculpture plinth, wide smooth elliptical top, just one low step, no sculpture or object on it. The empty plinth is the central foreground focal point and will receive a separate sculpture in software.\nCritical passage layout: In the CURVED back wall BEHIND the plinth, show TWO ACTUAL LARGE OPEN DOORWAYS, balanced, one centered approximately x26%, y45%, the other x74%, y45%. Both must visibly read as open passages. Large clean arches or restrained rounded openings are fine; no door panels. Each opens to a long bright neutral modern museum corridor with clearly visible perspective depth, receding floor and walls; the corridor ends are distant. Both openings must be fully visible, visually equal, and separated by generous curved wall. No central doorway. The empty plinth must not block the openings.\nSpace for overlay: leave clean negative space in upper corners and ample quiet left and right foreground for very small software-added labels.\nMaterials: matte pale limestone walls and floor, delicate fine joints, soft daylight falloff, convincing ambient occlusion. A graceful light skylight rim, no heavy classical columns. Refined high-end photoreal architectural render.\nConstraints: one scene only, no montage, no interface, no text, no signage, no letters, no people, no paintings, no artwork, no sculptures. Empty plinth only. No grand staircase, no balustrades, no throne, no altar, no statues, no baroque detail, no ornate temple, no Olympus look. Must unmistakably communicate curved rotunda geometry and two navigable corridors.",
+    "external_reference_images": [],
+    "model_selection": "No image model was selected or claimed"
+  },
+  "exports": [
+    {
+      "file": "rotunda-desktop.webp",
+      "format": "WebP",
+      "width": 1672,
+      "height": 941,
+      "bytes": 157340,
+      "quality": 88,
+      "compression": "lossy WebP, method 6, stripped metadata",
+      "source": "rotunda-original.png",
+      "sha256": "9d03c5fed73e57c05ef1fae6b8270db3eb85e141894f9f0600a1c4be5585148f"
+    },
+    {
+      "file": "rotunda-mobile.webp",
+      "format": "WebP",
+      "width": 529,
+      "height": 941,
+      "bytes": 31724,
+      "quality": 82,
+      "compression": "lossy WebP, method 6, stripped metadata",
+      "source": "rotunda-original.png",
+      "crop": {
+        "x": 572,
+        "y": 0,
+        "width": 529,
+        "height": 941
+      },
+      "sha256": "8063eae4ed3d5c8a5dc7e4416dfd1f577aa3891f101428a87d3913be779d819f"
+    }
+  ],
+  "original_sha256": "9cc3b7da69415974339fd9f15a1adbf6625af365f5df6fa2c5c1003f9c1ca9b4",
+  "composition_guidance": {
+    "coordinate_system": "Normalized original desktop image; top-left 0,0, bottom-right 1,1; approximate visual anchors",
+    "empty_plinth_top_center": {
+      "x": 0.5,
+      "y": 0.68
+    },
+    "left_corridor_opening_center": {
+      "x": 0.248,
+      "y": 0.42
+    },
+    "right_corridor_opening_center": {
+      "x": 0.758,
+      "y": 0.42
+    },
+    "mobile": "Centered portrait crop intentionally excludes passage openings; compose mobile clickable passage labels separately",
+    "implementation": "Render the abstract sculpture and interaction labels separately. Keep architecture decorative, with HTML providing navigation semantics."
+  },
+  "visual_validation": {
+    "inspected_assets": [
+      "rotunda-original.png",
+      "rotunda-desktop.webp",
+      "rotunda-mobile.webp"
+    ],
+    "checks_passed": [
+      "Clearly curved rotunda wall and concentric elliptical floor joints",
+      "Warm white limestone architecture with natural skylight",
+      "Two large balanced real open archways with bright corridor perspective depth",
+      "Empty low central oval plinth",
+      "No sculptures, paintings, people, signage, or generated text",
+      "No ornament, temple columns, baroque decoration, or staircase",
+      "Desktop and mobile exports inspected after compression"
+    ]
+  }
+}

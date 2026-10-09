@@ -1,0 +1,26 @@
+import {mountPhysicalFolio} from './physical-folio.mjs';
+const allowed={language:['en','ru'],quality:['full','light'],motion:['system','reduce','normal']};
+export const parseArtRoute=hash=>hash.replace(/^#/,'')==='rotunda'?'rotunda':'entrance';
+export const safePreferences=p=>Object.fromEntries(Object.entries(allowed).map(([key,values])=>[key,values.includes(p?.[key])?p[key]:values[0]]));
+export function coveredImageRect(width,height,imageWidth,imageHeight){const scale=Math.max(width/imageWidth,height/imageHeight);return {width:imageWidth*scale,height:imageHeight*scale,left:(width-imageWidth*scale)/2,top:(height-imageHeight*scale)/2};}
+if(typeof document!=='undefined'){
+ const scenes=[...document.querySelectorAll('[data-art-scene]')],mq=matchMedia('(prefers-reduced-motion:reduce)'),mobile=matchMedia('(max-aspect-ratio: 4/5)');
+ let prefs=safePreferences({});try{prefs=safePreferences(JSON.parse(localStorage.getItem('museum-art-preferences')||'{}'));}catch{}
+ let state={room:parseArtRoute(location.hash),...prefs},epoch=0;
+ const manifest=JSON.parse(document.querySelector('#scene-manifest').textContent);
+ const labels={en:{enter:'Enter the Central Rotunda',exit:'Return to the Entrance',creator:'Read IseFDK’s Creator Card',gallery:'Digital Gallery, future wing. Open the museum guide',interactive:'Interactive Exhibition, future wing. Open the museum guide',entrance:'Entrance',rotunda:'Central Rotunda'},ru:{enter:'Войти в Центральную ротонду',exit:'Вернуться ко входу',creator:'Открыть карточку автора IseFDK',gallery:'Цифровая галерея, будущее крыло. Открыть путеводитель',interactive:'Интерактивная выставка, будущее крыло. Открыть путеводитель',entrance:'Вход',rotunda:'Центральная ротонда'}};
+ const reduced=()=>state.motion==='reduce'||state.motion==='system'&&mq.matches;
+ function position(scene){const img=scene.querySelector('img');if(!img.complete||!img.naturalWidth)return;const data=manifest[scene.dataset.artScene][mobile.matches?'mobile':'desktop'];const r=coveredImageRect(scene.clientWidth,scene.clientHeight,img.naturalWidth,img.naturalHeight);for(const el of scene.querySelectorAll('[data-physical-hit]')){const b=data.areas[el.dataset.physicalHit];if(!b)continue;el.style.left=r.left+b.left*r.width+'px';el.style.top=r.top+b.top*r.height+'px';el.style.width=Math.max(30,b.width*r.width)+'px';el.style.height=Math.max(30,b.height*r.height)+'px';}}
+ function apply({focus=false}={}){document.documentElement.lang=state.language;document.body.dataset.quality=state.quality;document.body.dataset.reducedMotion=String(reduced());for(const scene of scenes){const active=scene.dataset.artScene===state.room;scene.hidden=!active;scene.setAttribute('aria-label',labels[state.language][scene.dataset.artScene]);const variant=mobile.matches?'mobile':'desktop',spec=manifest[scene.dataset.artScene][variant];const desired='architecture/'+spec.files[state.language][state.quality];const img=scene.querySelector('img');if(img.getAttribute('src')!==desired)img.src=desired;for(const hit of scene.querySelectorAll('[data-physical-hit]'))hit.setAttribute('aria-label',labels[state.language][hit.dataset.physicalHit]);position(scene);if(active&&focus)scene.focus({preventScroll:true});}
+ document.querySelector('#museum-status').textContent=labels[state.language][state.room];folio.update();}
+ function navigate(room){if(!['entrance','rotunda'].includes(room)||room===state.room)return;const next=++epoch;state.room=room;history.pushState({museumArt:true,room},'','#'+room);if(!reduced()){document.body.classList.add('scene-transition');setTimeout(()=>{if(epoch===next)document.body.classList.remove('scene-transition');},320);}apply({focus:true});}
+ const folio=mountPhysicalFolio({getState:()=>state,onNavigate:navigate,onPreferences:partial=>{state={...state,...safePreferences({...state,...partial})};try{localStorage.setItem('museum-art-preferences',JSON.stringify(safePreferences(state)));}catch{}apply();}});
+ const opener=document.querySelector('[data-open-physical-folio]');
+ document.addEventListener('click',e=>{const hit=e.target.closest('[data-physical-hit]');if(!hit)return;e.preventDefault();const action=hit.dataset.physicalHit;if(action==='enter')navigate('rotunda');else if(action==='exit')navigate('entrance');else {opener.click();const dialog=document.querySelector('#physical-visitor-folio');if(action==='creator'){const creator=dialog.querySelector('.pf-creator-card');creator?.scrollIntoView({block:'nearest',behavior:'instant'});creator?.querySelector('summary')?.focus({preventScroll:true});}}});
+ addEventListener('popstate',()=>{epoch++;document.body.classList.remove('scene-transition');state.room=parseArtRoute(location.hash);apply({focus:true});});
+ addEventListener('hashchange',()=>{state.room=parseArtRoute(location.hash);apply();});
+ for(const scene of scenes){scene.querySelector('img').addEventListener('load',()=>position(scene));new ResizeObserver(()=>position(scene)).observe(scene);}
+ mq.addEventListener('change',()=>apply());mobile.addEventListener('change',()=>apply());
+ document.documentElement.classList.add('art-enhanced');apply();
+ Object.defineProperty(window,'museumArtState',{get:()=>({...state,reduced:reduced()}),configurable:false});
+}
